@@ -1,0 +1,126 @@
+:root {
+  --ink:#111;
+  --bg:#ffffff;
+  --brand-bg:#f5d7f0;
+}
+
+/* ========================= 폰트 ========================= */
+@font-face {
+  font-family: 'DungGeunMo';
+  src: url('DungGeunMo.ttf') format('truetype');
+  font-display: swap;
+}
+* {
+  box-sizing: border-box;
+  font-family: 'DungGeunMo', monospace;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+/* ========================= 상단 헤더 (연보라) ========================= */
+.topbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 22px 0;
+  background: var(--brand-bg);
+  border: none;
+  box-shadow: none;
+}
+
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.brand {
+  margin: 0;
+  font-size: 40px;
+  letter-spacing: .02em;
+}
+
+/* ========================= 회원가입 폼 ========================= */
+.container {
+  width: min(820px, 92vw);
+  margin: 80px auto 100px;
+}
+
+.signup-form {
+  display: grid;
+  grid-template-columns: 260px 1fr; /* 👈 라벨 폭 넓힘 (균일 간격) */
+  align-items: center;
+  column-gap: 30px; /* 👈 라벨과 입력창 사이 간격 고정 */
+  row-gap: 24px;
+}
+
+.label {
+  font-size: 30px;
+  text-align: right;
+  white-space: nowrap; /* 줄바꿈 방지 */
+}
+
+.input-lg {
+  height: 54px;
+  padding: 0 16px;
+  font-size: 18px;
+  border: 1px solid #ececec;
+  border-radius: 10px;
+  background: #fff;
+  outline: none;
+  width: 100%; /* 👈 입력창 길이 통일 */
+}
+
+.input-lg:focus {
+  border-color: #d9d9d9;
+}
+
+/* ========================= 버튼 ========================= */
+.cta {
+  grid-column: span 2;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.btn-join {
+  min-width: 200px;
+  height: 60px;
+  font-size: 22px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  background: #efefef;
+  box-shadow: 0 6px 0 #cfcfcf;
+  color: #111;
+  cursor: pointer;
+}
+
+.btn-join:hover {
+  background: var(--brand-bg);
+}
+
+/* ========================= 반응형 ========================= */
+@media (max-width: 720px) {
+  .signup-form {
+    grid-template-columns: 1fr;
+  }
+
+  .label {
+    text-align: left;
+    font-size: 24px;
+  }
+}

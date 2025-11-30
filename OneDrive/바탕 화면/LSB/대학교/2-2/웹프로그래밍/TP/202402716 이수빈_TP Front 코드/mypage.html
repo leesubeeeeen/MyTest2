@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>만능레시피 | 마이페이지</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 상단 헤더 -->
+  <header class="topbar">
+    <a href="master_recipe.html" class="brand-wrap">
+      <img src="logo.png" alt="만능레시피 로고" class="logo" />
+      <h1 class="brand">만능레시피</h1>
+    </div>
+    <a id="loginLink" href="login.html" class="login-link">로그인/회원가입</a>
+  </header>
+
+  <!-- 내비게이션 -->
+  <nav class="tabbar">
+    <a class="tab" href="master_recipe.html">재료입력</a>
+    <a class="tab" href="popular_recipe.html">오늘의 인기 레시피</a>
+    <a class="tab active" href="mypage.html">마이페이지</a>
+    <a class="tab" href="support.html">고객지원</a>
+  </nav>
+
+  <!-- 메인 콘텐츠 -->
+  <main class="container mypage-container">
+    <!-- 최근 검색어 -->
+    <aside class="recent-box">
+      <h3 class="recent-title">최근 검색어</h3>
+      <div class="recent-tags">
+        <span class="tag">육전 ✕</span>
+        <span class="tag">시금치 된장국 ✕</span>
+        <span class="tag">짬뽕 ✕</span>
+      </div>
+    </aside>
+
+    <!-- 검색 및 필터 -->
+    <section class="mypage-main">
+      <div class="mypage-topbar">
+        <div class="searchbar short">
+          <input type="text" class="search-input" placeholder="Search" />
+          <span class="icon">🔍</span>
+        </div>
+
+        <div class="filter-buttons">
+          <button class="filter-btn active">✔ AI 분석 사용자 선호도 반영</button>
+          <button class="filter-btn">최근 레시피 검색어</button>
+          <button class="filter-btn">좋아요</button>
+        </div>
+      </div>
+
+      <!-- 추천 레시피 카드 -->
+      <div class="mypage-grid">
+        <div class="recipe-card-popular">
+          <img src="마라탕.png" alt="마라탕" class="popular-img" />
+          <h3 class="popular-name">마라탕</h3>
+          <a href="#" class="btn-view">레시피 보기</a>
+        </div>
+
+        <div class="recipe-card-popular">
+          <img src="제육볶음.png" alt="제육볶음" class="popular-img" />
+          <h3 class="popular-name">제육볶음</h3>
+          <a href="popular_detail.html" class="btn-view">레시피 보기</a>
+        </div>
+
+        <div class="recipe-card-popular">
+          <img src="간장치킨.png" alt="간장치킨" class="popular-img" />
+          <h3 class="#">간장치킨</h3>
+          <a href="#" class="btn-view">레시피 보기</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 만능레시피</footer>
+
+  <script>
+    // 로그인 상태 제어
+    const isLoggedIn = false;
+    const loginLink = document.getElementById("loginLink");
+    if (isLoggedIn) loginLink.style.display = "none";
+
+    // 필터버튼 토글
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>

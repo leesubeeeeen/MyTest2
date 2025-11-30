@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>만능레시피 | 오늘의 인기 레시피</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 상단 헤더 -->
+  <header class="topbar">
+    <a href="master_recipe.html" class="brand-wrap">
+      <img src="logo.png" alt="만능레시피 로고" class="logo" />
+      <h1 class="brand">만능레시피</h1>
+    </div>
+    <a id="loginLink" href="login.html" class="login-link">로그인/회원가입</a>
+  </header>
+
+  <!-- 내비게이션 -->
+  <nav class="tabbar">
+    <a class="tab" href="master_recipe.html">재료입력</a>
+    <a class="tab active" href="popular_recipe.html">오늘의 인기 레시피</a>
+    <a class="tab" href="mypage.html">마이페이지</a>
+    <a class="tab" href="support.html">고객지원</a>
+  </nav>
+
+  <!-- 메인 콘텐츠 -->
+  <main class="container">
+    <!-- 검색창 -->
+    <div class="searchbar">
+      <input type="text" class="search-input" placeholder="Search" />
+      <span class="icon">🔍</span>
+    </div>
+
+    <!-- 인기 레시피 목록 -->
+    <section class="popular-grid">
+      <div class="recipe-card-popular">
+        <img src="제육볶음.png" alt="제육볶음" class="popular-img" />
+        <h3 class="popular-name">제육볶음</h3>
+        <p class="popular-likes">♥ 124</p>
+        <a href="popular_detail.html" class="btn-view">레시피 보기</a>
+      </div>
+
+      <div class="recipe-card-popular">
+        <img src="삼계탕.png" alt="삼계탕" class="popular-img" />
+        <h3 class="popular-name">삼계탕</h3>
+        <p class="popular-likes">♥ 87</p>
+        <a href="#" class="btn-view">레시피 보기</a>
+      </div>
+
+      <div class="recipe-card-popular">
+        <img src="마라탕.png" alt="마라탕" class="popular-img" />
+        <h3 class="popular-name">마라탕</h3>
+        <p class="popular-likes">♥ 65</p>
+        <a href="#" class="btn-view">레시피 보기</a>
+      </div>
+
+      <div class="recipe-card-popular">
+        <img src="냉우동.png" alt="냉우동" class="popular-img" />
+        <h3 class="popular-name">냉우동</h3>
+        <p class="popular-likes">♥ 115</p>
+        <a href="#" class="btn-view">레시피 보기</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 만능레시피</footer>
+
+  <script>
+    // 로그인 상태 관리
+    const isLoggedIn = false;
+    const loginLink = document.getElementById("loginLink");
+    if (isLoggedIn) loginLink.style.display = "none";
+  </script>
+</body>
+</html>

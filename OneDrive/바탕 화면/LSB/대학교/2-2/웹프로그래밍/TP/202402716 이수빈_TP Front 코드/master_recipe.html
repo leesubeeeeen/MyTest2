@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>만능레시피 | 재료입력</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 상단 브랜드 바 -->
+<header class="topbar">
+  <a href="master_recipe.html" class="brand-wrap">
+    <img src="logo.png" alt="로고" class="logo">
+    <h1 class="brand">만능레시피</h1>
+  </div>
+  <a href="login.html" class="login-link">로그인/회원가입</a>
+</header>
+
+
+  <!-- 2단 내비게이션 -->
+  <nav class="tabbar">
+    <a class="tab active" href="master_recipe.html">재료입력</a>
+    <a class="tab" href="popular_recipe.html">오늘의 인기 레시피</a>
+    <a class="tab" href="mypage.html">마이페이지</a>
+    <a class="tab" href="support.html">고객지원</a>
+  </nav>
+
+  <!-- 메인 콘텐츠 -->
+  <main class="container">
+    <section class="hero">
+      <!-- 제목 + 검색창 한 줄 -->
+<div class="title-row">
+      <h2 class="page-title">재료 입력</h2>
+
+      <div class="searchbar long" id="openModal">
+        <span class="icon">🔍</span>
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Search"
+          aria-label="검색어 입력"
+          readonly
+        />
+      </div>
+    </div>
+
+
+      <!-- 재료 박스 -->
+      <div class="ingredient-box" id="ingredientBox">
+        <!-- 선택된 재료들이 여기에 표시됨 -->
+        <div class="edit-buttons hidden" id="editButtons">
+          <button id="editBtn" class="btn-small">수정</button>
+          <button id="clearBtn" class="btn-small">삭제</button>
+        </div>
+      </div>
+
+      <!-- 검색 버튼 -->
+      <div class="cta">
+        <a href="results.html" class="btn-primary">레시피 검색하기</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== 모달 ==================== -->
+  <div class="modal hidden" id="ingredientModal">
+    <div class="modal-content">
+      <!-- 상단 입력창 -->
+      <div class="modal-header">
+        <div class="modal-search">
+          <span class="icon">🔍</span>
+          <input id="ingredientInput" type="text" placeholder="재료를 입력하세요 (Enter)" />
+        </div>
+        <button class="btn-close" id="closeModal">✖</button>
+      </div>
+
+      <hr class="modal-line" />
+
+      <!-- 입력된 재료 리스트 -->
+      <div class="tag-container" id="tagContainer"></div>
+
+      <!-- 완료 버튼 -->
+      <div class="modal-footer">
+        <button id="finishInput" class="btn-finish">입력 완료</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ---------------- 로그인 숨김 ----------------
+    const isLoggedIn = false;
+    const loginLink = document.getElementById("loginLink");
+    if (isLoggedIn) loginLink.style.display = "none";
+
+    // ---------------- 모달 열고 닫기 ----------------
+    const openModalBtn = document.getElementById("openModal");
+    const closeModalBtn = document.getElementById("closeModal");
+    const modal = document.getElementById("ingredientModal");
+    const finishBtn = document.getElementById("finishInput");
+
+    openModalBtn.addEventListener("click", () => {
+      modal.classList.remove("hidden");
+    });
+    closeModalBtn.addEventListener("click", () => {
+      modal.classList.add("hidden");
+    });
+    finishBtn.addEventListener("click", () => {
+      modal.classList.add("hidden");
+      renderMainTags(); // 입력 완료 시 메인에 반영
+    });
+
+    // ---------------- 재료 추가/삭제 ----------------
+    const input = document.getElementById("ingredientInput");
+    const tagContainer = document.getElementById("tagContainer");
+    const ingredientBox = document.getElementById("ingredientBox");
+    const editButtons = document.getElementById("editButtons");
+
+    let ingredients = [];
+
+    input.addEventListener("keypress", (e) => {
+      if (e.key === "Enter" && input.value.trim() !== "") {
+        e.preventDefault();
+        const ingredient = input.value.trim();
+        if (!ingredients.includes(ingredient)) {
+          ingredients.push(ingredient);
+          renderTags();
+        }
+        input.value = "";
+      }
+    });
+
+    function renderTags() {
+      tagContainer.innerHTML = "";
+      ingredients.forEach((item) => {
+        const tag = document.createElement("div");
+        tag.classList.add("tag");
+        tag.innerHTML = `${item} <span class="remove">✖</span>`;
+        tag.querySelector(".remove").addEventListener("click", () => {
+          ingredients = ingredients.filter((ing) => ing !== item);
+          renderTags();
+        });
+        tagContainer.appendChild(tag);
+      });
+    }
+
+    // ---------------- 메인 반영 ----------------
+    function renderMainTags() {
+      ingredientBox.innerHTML = "";
+      if (ingredients.length > 0) {
+        ingredients.forEach((item) => {
+          const mainTag = document.createElement("div");
+          mainTag.classList.add("tag", "main-tag");
+          mainTag.textContent = item;
+          ingredientBox.appendChild(mainTag);
+        });
+        ingredientBox.appendChild(editButtons);
+        editButtons.classList.remove("hidden");
+      } else {
+        editButtons.classList.add("hidden");
+      }
+    }
+
+    // ---------------- 수정/삭제 버튼 ----------------
+    const editBtn = document.getElementById("editBtn");
+    const clearBtn = document.getElementById("clearBtn");
+
+    editBtn.addEventListener("click", () => {
+      modal.classList.remove("hidden");
+    });
+
+    clearBtn.addEventListener("click", () => {
+      ingredients = [];
+      ingredientBox.innerHTML = "";
+      editButtons.classList.add("hidden");
+    });
+  </script>
+</body>
+</html>

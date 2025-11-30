@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>만능레시피 | 계란말이</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 상단 헤더 -->
+  <header class="topbar">
+    <a href="master_recipe.html" class="brand-wrap">
+      <img src="logo.png" alt="만능레시피 로고" class="logo" />
+      <h1 class="brand">만능레시피</h1>
+    </div>
+    <a id="loginLink" href="login.html" class="login-link">로그인/회원가입</a>
+  </header>
+
+  <!-- 내비게이션 -->
+  <nav class="tabbar">
+    <a class="tab active" href="master_recipe.html">재료입력</a>
+    <a class="tab" href="popular_recipe.html">오늘의 인기 레시피</a>
+    <a class="tab" href="mypage.html">마이페이지</a>
+    <a class="tab" href="support.html">고객지원</a>
+  </nav>
+
+  <!-- 메인 콘텐츠 -->
+  <main class="container">
+    <section class="detail-card">
+      <div class="detail-img-wrap">
+        <img src="계란말이.png" alt="계란말이" class="detail-img" />
+      </div>
+
+      <div class="detail-info">
+        <div class="detail-header">
+          <h2 class="recipe-title">계란말이</h2>
+          <button id="likeBtn" class="heart-btn">❤</button>
+        </div>
+
+        <p class="recipe-desc">
+          달걀을 풀어 팬에 얇게 부친 뒤 여러 겹으로 말아 익힌 요리로,
+          부드럽고 담백한 맛이 특징이에요.
+        </p>
+
+        <h3 class="recipe-subtitle">재료</h3>
+        <p class="recipe-ingredients">
+          계란 3개, 버섯, 당근, 파, 양파, 소금, 식용유
+        </p>
+
+        <h3 class="recipe-subtitle">만드는 법</h3>
+        <ol class="recipe-steps">
+          <li>버섯, 당근, 파, 양파를 잘게 다져준다.</li>
+          <li>계란을 소금과 함께 풀어준다.</li>
+          <li>만들어진 계란물에 다진 야채를 넣고 섞는다.</li>
+          <li>팬에 식용유를 넣고 달군 뒤, 섞은 계란물을 넣는다.</li>
+          <li>어느 정도 밑부분이 익으면 여러 번 접어 말아준다.</li>
+          <li>한 김 식힌 뒤 칼로 잘라 완성한다.</li>
+        </ol>
+
+        <div class="back-btn-wrap">
+          <button id="backBtn" class="btn-back">돌아가기</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 만능레시피</footer>
+
+  <script>
+    // 로그인 표시 제어
+    const isLoggedIn = false;
+    const loginLink = document.getElementById("loginLink");
+    if (isLoggedIn) loginLink.style.display = "none";
+
+    // 하트 버튼 토글
+    const likeBtn = document.getElementById("likeBtn");
+    let liked = false;
+    likeBtn.addEventListener("click", () => {
+      liked = !liked;
+      likeBtn.classList.toggle("active", liked);
+    });
+
+    // 돌아가기
+    const backBtn = document.getElementById("backBtn");
+    backBtn.addEventListener("click", () => {
+      window.location.href = "results.html";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>만능레시피 | 추천결과</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 상단 브랜드 바 -->
+  <header class="topbar">
+    <a href="master_recipe.html" class="brand-wrap">
+      <img src="logo.png" alt="만능레시피 로고" class="logo" />
+      <h1 class="brand">만능레시피</h1>
+    </div>
+    <a id="loginLink" href="login.html" class="login-link">로그인/회원가입</a>
+  </header>
+
+  <!-- 내비게이션 -->
+  <nav class="tabbar">
+    <a class="tab active" href="master_recipe.html">재료입력</a>
+    <a class="tab" href="popular_recipe.html">오늘의 인기 레시피</a>
+    <a class="tab" href="mypage.html">마이페이지</a>
+    <a class="tab" href="support.html">고객지원</a>
+  </nav>
+
+  <!-- 메인 콘텐츠 -->
+  <main class="container">
+    <section class="recommend">
+      <h2 class="recommend-title">AI가 추천해요!</h2>
+      <p class="recommend-desc">
+        사용자의 재료를 바탕으로 레시피를 추천해봤어요.
+      </p>
+
+      <!-- ===== 추천 리스트 ===== -->
+      <div class="recipe-card">
+        <img src="계란말이.png" alt="계란말이" class="recipe-img" />
+        <div class="recipe-info">
+          <h3 class="recipe-name">계란말이</h3>
+          <p class="recipe-desc">
+            달걀을 풀어 팬에 얇게 부친 뒤 여러 겹으로 말아 익힌 요리로,
+            부드럽고 담백한 맛이 특징이에요.
+          </p>
+          <a href="recipe_detail.html" class="btn-view">레시피 보기</a>
+        </div>
+      </div>
+
+      <div class="recipe-card">
+        <img src="야채볶음밥.png" alt="야채볶음밥" class="recipe-img" />
+        <div class="recipe-info">
+          <h3 class="recipe-name">야채볶음밥</h3>
+          <p class="recipe-desc">
+            밥에 각종 채소를 넣고 함께 볶아 만든 한 그릇 요리에요.
+            주로 당근, 양파, 파, 버섯, 피망 등이 들어가며,
+            간단히 간장이나 소금으로 간을 맞춰 담백하게 즐길 수 있습니다.
+          </p>
+          <a href="#" class="btn-view">레시피 보기</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 만능레시피</footer>
+
+  <script>
+    // 로그인 상태 관리
+    const isLoggedIn = false;
+    const loginLink = document.getElementById("loginLink");
+    if (isLoggedIn) loginLink.style.display = "none";
+  </script>
+</body>
+</html>
